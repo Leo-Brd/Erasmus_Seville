@@ -11,7 +11,7 @@ export const ui = {
     menu: 'Menu',
     language: 'Langue',
     skip: 'Aller au contenu',
-    footer: { madeBy: 'Réalisé par', instagram: 'instagram' },
+    footer: { madeBy: 'Écrit par', developedBy: 'Site développé par', instagram: 'instagram' },
     photo: { soon: 'Ma photo arrive bientôt' },
     comingSoon: 'À venir',
     home: {
@@ -108,7 +108,7 @@ export const ui = {
     menu: 'Menú',
     language: 'Idioma',
     skip: 'Ir al contenido',
-    footer: { madeBy: 'Realizado por', instagram: 'instagram' },
+    footer: { madeBy: 'Escrito por', developedBy: 'Web desarrollada por', instagram: 'instagram' },
     photo: { soon: 'Mi foto llegará pronto' },
     comingSoon: 'Próximamente',
     home: {
@@ -205,7 +205,7 @@ export const ui = {
     menu: 'Menu',
     language: 'Language',
     skip: 'Skip to content',
-    footer: { madeBy: 'Made by', instagram: 'instagram' },
+    footer: { madeBy: 'Written by', developedBy: 'Website developed by', instagram: 'instagram' },
     photo: { soon: 'My photo is coming soon' },
     comingSoon: 'Coming soon',
     home: {

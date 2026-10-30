@@ -1291,18 +1291,28 @@ a:focus-visible,
 .footer__inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 8px 24px;
+  gap: 8px 28px;
   padding-block: 22px;
   text-align: center;
 }
 .footer p {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 8px;
   margin: 0;
+  line-height: 1.4;
+}
+.footer__link {
+  line-height: 1.4;
 }
 .footer strong {
   color: #fff;
 }
-.footer__insta {
+.footer__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1310,7 +1320,7 @@ a:focus-visible,
   text-decoration: none;
   font-weight: 600;
 }
-.footer__insta:hover {
+.footer__link:hover {
   text-decoration: underline;
 }
 

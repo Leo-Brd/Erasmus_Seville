@@ -42,6 +42,7 @@ const paths = {
   instagram: (<><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".8" /></>),
   globe: (<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" /></>),
   check: (<path d="M5 12l5 5 9-10" />),
+  code: (<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />),
 }
 
 export default function Icon({ name, size = 24, className = '', title }) {

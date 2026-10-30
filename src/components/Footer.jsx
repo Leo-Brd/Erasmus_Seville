@@ -10,10 +10,17 @@ export default function Footer() {
         <p>
           {t.footer.madeBy} <strong>Laurine Ouizemann</strong>
         </p>
-        <a className="footer__insta" href="https://www.instagram.com/lolo.ouiz" target="_blank" rel="noopener noreferrer">
+        <a className="footer__link" href="https://www.instagram.com/lolo.ouiz" target="_blank" rel="noopener noreferrer">
           <Icon name="instagram" size={18} />
           {t.footer.instagram}: lolo.ouiz
         </a>
+        <p>
+          {t.footer.developedBy}
+          <a className="footer__link" href="https://github.com/Leo-Brd" target="_blank" rel="noopener noreferrer">
+            <Icon name="code" size={18} />
+            Leo-Brd
+          </a>
+        </p>
       </div>
     </footer>
   )
