@@ -4,6 +4,7 @@ import { events } from '../data/events.js'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import Photo from '../components/Photo.jsx'
+import PhotoCredit from '../components/PhotoCredit.jsx'
 
 const FILTERS = [
   { id: 'all', key: 'filterAll' },
@@ -73,7 +74,10 @@ export default function Calendar() {
                     {l(e.example)}
                   </p>
                 )}
-                <Photo name={`evenements/${e.id}`} alt={l(e.name)} ratio="16 / 9" />
+                <figure className="event__figure">
+                  <Photo name={`evenements/${e.id}`} alt={l(e.name)} ratio="16 / 9" position={e.photo?.focus} />
+                  <PhotoCredit photo={e.photo} />
+                </figure>
                 <p className="event__desc">{l(e.desc)}</p>
               </article>
             </li>

@@ -5,9 +5,14 @@
 // Photos : dépose un fichier dans src/photos/evenements/<id>.jpg (ex. semana-santa.jpg).
 // `order` sert uniquement à classer la frise de septembre à août.
 
+// Photos : src/photos/evenements/<id>.jpg, toutes issues de Wikimedia Commons (licences libres). Le crédit affiché
+// sous la photo vient du champ `photo` ; `focus` règle le cadrage (object-position) si besoin.
+const photo = (author, license, url, focus) => ({ author, license, url, focus })
+
 export const events = [
   {
     id: 'rentree-automne',
+    photo: photo('Anual', 'CC BY 3.0', 'https://commons.wikimedia.org/wiki/File:Universidad_de_Sevilla_(rectorado)_001.jpg'),
     icon: 'school',
     order: 0.3,
     semester: 'autumn',
@@ -22,6 +27,7 @@ export const events = [
   },
   {
     id: 'bienal-flamenco',
+    photo: photo('Schnobby', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Flamenco_in_Sevilla_01.jpg', '50% 40%'),
     icon: 'guitar',
     order: 0.9,
     semester: 'autumn',
@@ -36,6 +42,7 @@ export const events = [
   },
   {
     id: 'cine-europeo',
+    photo: photo('Zarateman', 'CC0', 'https://commons.wikimedia.org/wiki/File:Sevilla_-_Teatro_Lope_de_Vega_01.jpg'),
     icon: 'clapper',
     order: 2.4,
     semester: 'autumn',
@@ -50,6 +57,7 @@ export const events = [
   },
   {
     id: 'illuminations-noel',
+    photo: photo('Curimedia', 'CC BY 2.0', 'https://commons.wikimedia.org/wiki/File:Seville_city_at_Christmas_night_(6570969587).jpg'),
     icon: 'lights',
     order: 2.9,
     semester: 'autumn',
@@ -64,6 +72,7 @@ export const events = [
   },
   {
     id: 'immaculee-seises',
+        photo: photo({ fr: 'Auteur inconnu (photo vers 1900)', es: 'Autor desconocido (foto hacia 1900)', en: 'Unknown author (photo c. 1900)' }, { fr: 'Domaine public', es: 'Dominio público', en: 'Public domain' }, 'https://commons.wikimedia.org/wiki/File:Seises_1900.jpg', '50% 40%'),
     icon: 'bell',
     order: 3.25,
     semester: 'autumn',
@@ -78,6 +87,7 @@ export const events = [
   },
   {
     id: 'cabalgata-reyes',
+    photo: photo('Ateneo de Sevilla', 'CC BY-SA 3.0', 'https://commons.wikimedia.org/wiki/File:Cabalgata_de_Reyes_Magos_2013.jpg'),
     icon: 'crown',
     order: 4.15,
     semester: 'autumn',
@@ -92,6 +102,7 @@ export const events = [
   },
   {
     id: 'rentree-printemps',
+    photo: photo('Jl FilpoC', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Facultad_de_Ciencias_de_la_Comunicaci%C3%B3n,_Universidad_de_Sevilla.jpg'),
     icon: 'school',
     order: 5.1,
     semester: 'spring',
@@ -106,6 +117,7 @@ export const events = [
   },
   {
     id: 'carnaval-cadiz',
+    photo: photo('El Pantera', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Carnaval_de_C%C3%A1diz_2014_-_MIN-DSC04774.jpg'),
     icon: 'mask',
     order: 5.4,
     semester: 'spring',
@@ -120,6 +132,7 @@ export const events = [
   },
   {
     id: 'dia-andalucia',
+    photo: photo('Daniel Capilla', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Flag_to_the_Citizen_Mobilization_for_Andalusia%27s_Autonomy_01.jpg', '50% 10%'),
     icon: 'flag',
     order: 5.95,
     semester: 'spring',
@@ -134,6 +147,7 @@ export const events = [
   },
   {
     id: 'semana-santa',
+    photo: photo('Cofrades 2020 sevilla', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Paso_del_Cachorro_Semana_Santa_2025.jpg'),
     icon: 'candle',
     order: 7.2,
     semester: 'spring',
@@ -153,6 +167,7 @@ export const events = [
   },
   {
     id: 'feria-abril',
+    photo: photo('CarlosVdeHabsburgo', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Feria_de_Abril_2018_24.jpg'),
     icon: 'tent',
     order: 7.8,
     semester: 'spring',
@@ -167,6 +182,7 @@ export const events = [
   },
   {
     id: 'cruces-mayo',
+    photo: photo('CarlosVdeHabsburgo', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Cruces_de_Mayo_(Sevilla).jpg'),
     icon: 'cross',
     order: 8.1,
     semester: 'spring',
@@ -181,6 +197,7 @@ export const events = [
   },
   {
     id: 'romeria-rocio',
+    photo: photo('Pepe Gadeiras', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:CARRETAS_CAMINO_DEL_ROC%C3%8DO.jpg'),
     icon: 'wheel',
     order: 8.85,
     semester: 'spring',
@@ -200,6 +217,7 @@ export const events = [
   },
   {
     id: 'corpus-christi',
+    photo: photo('José Antonio Montero Fernández', 'CC BY-SA 3.0', 'https://commons.wikimedia.org/wiki/File:Custodia_de_Juan_de_Arfe,_Sevilla..jpg'),
     icon: 'monstrance',
     order: 9.1,
     semester: 'spring',
@@ -219,6 +237,7 @@ export const events = [
   },
   {
     id: 'vela-santa-ana',
+    photo: photo('Gzzz', 'CC BY-SA 3.0', 'https://commons.wikimedia.org/wiki/File:Vel%C3%A1_de_Santa_Ana_puente_de_Triana.JPG'),
     icon: 'firework',
     order: 10.8,
     semester: 'summer',

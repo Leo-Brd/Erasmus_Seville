@@ -794,12 +794,13 @@ a:focus-visible,
   margin: 0;
   align-self: start;
 }
-.trip__figure figcaption {
+.trip__figure figcaption,
+.photo-credit {
   margin-top: 6px;
   font-size: 0.75rem;
   color: var(--muted);
 }
-.trip__figure figcaption a {
+.photo-credit a {
   color: inherit;
 }
 .trip__body dl {
@@ -999,8 +1000,11 @@ a:focus-visible,
   color: var(--orange-dark);
   margin-bottom: 12px;
 }
-.event__card .photo {
+.event__figure {
   margin: 12px 0;
+}
+.event__figure .photo {
+  margin: 0;
 }
 .event__desc {
   margin: 0;

@@ -6,6 +6,7 @@ import { allPlaces, themes } from '../data/places.js'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import Photo from '../components/Photo.jsx'
+import PhotoCredit from '../components/PhotoCredit.jsx'
 
 function TipsList({ tab }) {
   const { t, l } = useI18n()
@@ -121,15 +122,7 @@ function Trips() {
                 <div className="trip__body">
                   <figure className="trip__figure">
                     <Photo name={`voyages/${trip.id}`} alt={trip.name} ratio="16 / 9" position={trip.photo?.focus} />
-                    {trip.photo && (
-                      <figcaption>
-                        {t.tips.photoBy}:{' '}
-                        <a href={trip.photo.url} target="_blank" rel="noopener noreferrer">
-                          {trip.photo.author}
-                        </a>
-                        , {trip.photo.license} · Wikimedia Commons
-                      </figcaption>
-                    )}
+                    <PhotoCredit photo={trip.photo} />
                   </figure>
                   <dl>
                     {fields.map((f) => (
