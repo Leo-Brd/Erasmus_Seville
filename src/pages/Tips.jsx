@@ -93,6 +93,10 @@ function Trips() {
     <section className="panel">
       <h2>{t.tips.tripsHeading}</h2>
       <p className="muted">{t.tips.tripsIntro}</p>
+      <p className="callout">
+        <Icon name="coin" size={18} />
+        {t.tips.tripsNote}
+      </p>
       <div className="trips">
         {trips.map((trip) => {
           const isOpen = openId === trip.id
@@ -115,7 +119,18 @@ function Trips() {
               </button>
               {isOpen && (
                 <div className="trip__body">
-                  <Photo name={`voyages/${trip.id}`} alt={trip.name} ratio="16 / 9" />
+                  <figure className="trip__figure">
+                    <Photo name={`voyages/${trip.id}`} alt={trip.name} ratio="16 / 9" position={trip.photo?.focus} />
+                    {trip.photo && (
+                      <figcaption>
+                        {t.tips.photoBy}:{' '}
+                        <a href={trip.photo.url} target="_blank" rel="noopener noreferrer">
+                          {trip.photo.author}
+                        </a>
+                        , {trip.photo.license} · Wikimedia Commons
+                      </figcaption>
+                    )}
+                  </figure>
                   <dl>
                     {fields.map((f) => (
                       <div key={f} className="trip__field">

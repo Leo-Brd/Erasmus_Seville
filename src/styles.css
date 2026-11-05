@@ -790,6 +790,18 @@ a:focus-visible,
   gap: 20px;
   padding: 0 16px 18px;
 }
+.trip__figure {
+  margin: 0;
+  align-self: start;
+}
+.trip__figure figcaption {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.trip__figure figcaption a {
+  color: inherit;
+}
 .trip__body dl {
   margin: 0;
   display: grid;

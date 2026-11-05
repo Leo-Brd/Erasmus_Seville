@@ -19,7 +19,7 @@ export function hasPhoto(name) {
   return Boolean(index[name?.toLowerCase()])
 }
 
-export default function Photo({ name, alt = '', ratio = '4 / 3', className = '' }) {
+export default function Photo({ name, alt = '', ratio = '4 / 3', className = '', position }) {
   const { t } = useI18n()
   const [failed, setFailed] = useState(false)
   const url = name ? index[name.toLowerCase()] : undefined
@@ -27,7 +27,7 @@ export default function Photo({ name, alt = '', ratio = '4 / 3', className = '' 
   if (url && !failed) {
     return (
       <div className={`photo ${className}`} style={{ aspectRatio: ratio }}>
-        <img src={url} alt={alt} loading="lazy" onError={() => setFailed(true)} />
+        <img src={url} alt={alt} loading="lazy" style={position ? { objectPosition: position } : undefined} onError={() => setFailed(true)} />
       </div>
     )
   }
