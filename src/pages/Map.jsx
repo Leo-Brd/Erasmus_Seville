@@ -2,6 +2,8 @@ import { useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n.jsx'
 import { allPlaces, hoods, themes } from '../data/places.js'
+import { placeCoords, hoodCoords } from '../data/placeCoords.js'
+import { project } from '../data/mapData.js'
 import CityMap from '../components/CityMap.jsx'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
@@ -10,12 +12,34 @@ import Photo from '../components/Photo.jsx'
 const themeById = Object.fromEntries(themes.map((x) => [x.id, x]))
 const hoodById = Object.fromEntries(hoods.map((h) => [h.id, h]))
 
+const hoodPos = (h) => hoodCoords[h.id] ?? (h.lat != null ? project(h.lat, h.lon) : null)
+
+// Points à cadrer sur la carte pour une sélection (quartier et/ou thème). Liste vide : vue d'ensemble.
+function pointsFor(hoodId, themeId) {
+  const pts = []
+  if (hoodId) {
+    const h = hoodById[hoodId]
+    const pos = hoodPos(h)
+    if (pos) pts.push(pos)
+    for (const p of h.places) if (placeCoords[p.id] && (!themeId || p.theme === themeId)) pts.push(placeCoords[p.id])
+    return pts
+  }
+  if (themeId) {
+    for (const p of allPlaces) {
+      if (p.theme !== themeId) continue
+      if (placeCoords[p.id]) pts.push(placeCoords[p.id])
+      else if (hoodPos(hoodById[p.hood])) pts.push(hoodPos(hoodById[p.hood]))
+    }
+  }
+  return pts
+}
+
 function PlaceItem({ place, open, onToggle }) {
   const { t, l } = useI18n()
   const theme = themeById[place.theme]
 
   return (
-    <li className={`place ${open ? 'is-open' : ''}`}>
+    <li id={`place-${place.id}`} className={`place ${open ? 'is-open' : ''}`}>
       <button type="button" className="place__head" aria-expanded={open} onClick={onToggle}>
         <span className={`place__icon theme-${place.theme}`}>
           <Icon name={theme.icon} size={18} />
@@ -55,6 +79,14 @@ export default function MapPage() {
   const [hoodId, setHoodId] = useState(initialPlace?.hood ?? null)
   const [themeId, setThemeId] = useState(initialTheme)
   const [openPlace, setOpenPlace] = useState(initialPlace?.id ?? null)
+  const focusSeq = useRef(0)
+  const [focus, setFocus] = useState(() => {
+    const pts = pointsFor(initialPlace?.hood ?? null, initialTheme)
+    const own = initialPlace && placeCoords[initialPlace.id]
+    return pts.length || own ? { key: 0, points: own ? [own] : pts, minW: own ? 420 : 520 } : null
+  })
+
+  const focusOn = (points, minW) => setFocus({ key: ++focusSeq.current, points, minW })
 
   const litIds = useMemo(
     () => (themeId ? new Set(allPlaces.filter((p) => p.theme === themeId).map((p) => p.hood)) : null),
@@ -68,21 +100,34 @@ export default function MapPage() {
   }
 
   const selectHood = (id) => {
-    setHoodId((cur) => (cur === id ? null : id))
+    const next = hoodId === id ? null : id
+    setHoodId(next)
     setOpenPlace(null)
-    if (hoodId !== id) scrollToPanel()
+    const pts = pointsFor(next, themeId)
+    if (pts.length || !next) focusOn(pts)
+    if (next) scrollToPanel()
   }
 
   const selectTheme = (id) => {
-    setThemeId((cur) => (cur === id ? null : id))
+    const next = themeId === id ? null : id
+    setThemeId(next)
     setOpenPlace(null)
-    scrollToPanel()
+    focusOn(pointsFor(hoodId, next))
+    if (next) scrollToPanel()
   }
 
   const reset = () => {
     setHoodId(null)
     setThemeId(null)
     setOpenPlace(null)
+    focusOn([])
+  }
+
+  const togglePlace = (id) => {
+    const opening = openPlace !== id
+    setOpenPlace(opening ? id : null)
+    if (opening && placeCoords[id]) focusOn([placeCoords[id]], 380)
+    if (opening) setTimeout(() => document.getElementById(`place-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60)
   }
 
   const places = useMemo(() => {
@@ -91,6 +136,15 @@ export default function MapPage() {
     if (themeId) list = list.filter((p) => p.theme === themeId)
     return list
   }, [hoodId, themeId])
+
+  // Points affichés sur la carte : uniquement les lieux dont l'emplacement a été retrouvé avec certitude.
+  const markers = useMemo(
+    () =>
+      hoodId || themeId
+        ? places.filter((p) => placeCoords[p.id]).map((p) => ({ id: p.id, theme: p.theme, name: p.name, x: placeCoords[p.id][0], y: placeCoords[p.id][1] }))
+        : [],
+    [places, hoodId, themeId],
+  )
 
   // Dans un quartier : regroupé par thème. Dans un thème (sans quartier) : regroupé par quartier.
   const groups = useMemo(() => {
@@ -144,7 +198,16 @@ export default function MapPage() {
       <div className="map-layout">
         <div className="map-col">
           <div className="map-frame">
-            <CityMap hoods={hoods} selectedId={hoodId} litIds={litIds} onSelect={selectHood} />
+            <CityMap
+              hoods={hoods}
+              selectedId={hoodId}
+              litIds={litIds}
+              onSelect={selectHood}
+              markers={markers}
+              selectedPlaceId={openPlace}
+              onSelectPlace={togglePlace}
+              focus={focus}
+            />
           </div>
 
           <h2 className="map-legend__title">{m.hoods}</h2>
@@ -183,6 +246,7 @@ export default function MapPage() {
               </header>
               {hood?.toConfirm && <p className="callout">{m.toConfirmHint}</p>}
               {hood?.outside && <p className="callout">{m.outsideHint}</p>}
+              {markers.length > 0 && <p className="results__note">{m.pinnedHint}</p>}
               {groups.length === 0 && <p className="soon">{m.noPlaces}</p>}
               {groups.map((g) => (
                 <div key={g.key} className="results__group">
@@ -196,7 +260,7 @@ export default function MapPage() {
                         key={p.id}
                         place={p}
                         open={openPlace === p.id}
-                        onToggle={() => setOpenPlace((cur) => (cur === p.id ? null : p.id))}
+                        onToggle={() => togglePlace(p.id)}
                       />
                     ))}
                   </ul>

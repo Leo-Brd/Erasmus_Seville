@@ -23,8 +23,8 @@ const hoodDefs = [
   {
     id: 'santa-cruz',
     num: 1,
-    x: 485,
-    y: 395,
+    lat: 37.3858,
+    lon: -5.9895,
     name: 'Santa Cruz',
     places: [
       p('Real Alcázar', 'monuments'),
@@ -37,8 +37,8 @@ const hoodDefs = [
   {
     id: 'arenal',
     num: 2,
-    x: 392,
-    y: 338,
+    lat: 37.3866,
+    lon: -5.9982,
     name: 'El Arenal',
     places: [
       p('Torre del Oro', 'monuments'),
@@ -51,8 +51,8 @@ const hoodDefs = [
   {
     id: 'centro',
     num: 3,
-    x: 447,
-    y: 300,
+    lat: 37.3887,
+    lon: -5.9958,
     name: 'Centro',
     places: [
       p({ fr: 'Archives générales des Indes', es: 'Archivo General de Indias', en: 'General Archive of the Indies' }, 'monuments'),
@@ -70,8 +70,8 @@ const hoodDefs = [
   {
     id: 'alfalfa',
     num: 4,
-    x: 522,
-    y: 305,
+    lat: 37.3913,
+    lon: -5.9922,
     name: 'Alfalfa',
     places: [
       p('Casa de Pilatos', 'monuments'),
@@ -90,8 +90,8 @@ const hoodDefs = [
   {
     id: 'san-bartolome',
     num: 5,
-    x: 560,
-    y: 358,
+    lat: 37.3897,
+    lon: -5.9885,
     name: 'San Bartolomé',
     places: [
       p('Iglesia Santa María la Blanca', 'eglises'),
@@ -107,8 +107,8 @@ const hoodDefs = [
   {
     id: 'feria',
     num: 6,
-    x: 548,
-    y: 252,
+    lat: 37.3978,
+    lon: -5.9918,
     name: 'Feria',
     places: [
       p('Mercado de Feria', 'restos'),
@@ -120,8 +120,8 @@ const hoodDefs = [
   {
     id: 'alameda',
     num: 7,
-    x: 480,
-    y: 232,
+    lat: 37.3992,
+    lon: -5.9959,
     name: 'Alameda de Hércules',
     short: 'Alameda',
     places: [
@@ -140,8 +140,8 @@ const hoodDefs = [
   {
     id: 'triana',
     num: 8,
-    x: 262,
-    y: 352,
+    lat: 37.3845,
+    lon: -6.0035,
     name: 'Triana',
     places: [
       p('Mercado de Triana', 'restos'),
@@ -159,8 +159,8 @@ const hoodDefs = [
   {
     id: 'remedios',
     num: 9,
-    x: 268,
-    y: 462,
+    lat: 37.3755,
+    lon: -6.0035,
     name: 'Los Remedios',
     places: [
       p('Parque de los Príncipes', 'parcs'),
@@ -170,8 +170,8 @@ const hoodDefs = [
   {
     id: 'macarena',
     num: 10,
-    x: 570,
-    y: 150,
+    lat: 37.4036,
+    lon: -5.9906,
     name: 'La Macarena',
     places: [
       p({ fr: 'Basilique de la Macarena', es: 'Basílica de la Macarena', en: 'Macarena Basilica' }, 'eglises'),
@@ -185,8 +185,8 @@ const hoodDefs = [
   {
     id: 'san-lorenzo',
     num: 11,
-    x: 418,
-    y: 238,
+    lat: 37.3965,
+    lon: -5.999,
     name: 'San Lorenzo',
     places: [
       p({ fr: 'Basilique de Jesús del Gran Poder', es: 'Basílica de Jesús del Gran Poder', en: 'Basilica of Jesús del Gran Poder' }, 'eglises'),
@@ -197,16 +197,16 @@ const hoodDefs = [
   {
     id: 'san-julian',
     num: 12,
-    x: 612,
-    y: 232,
+    lat: 37.3992,
+    lon: -5.9885,
     name: 'San Julián',
     places: [p('Iglesia de San Julián', 'eglises'), p('Iglesia de Santa Marina', 'eglises')],
   },
   {
     id: 'maria-luisa',
     num: 13,
-    x: 418,
-    y: 470,
+    lat: 37.3768,
+    lon: -5.987,
     name: 'Porvenir / Parque de María Luisa',
     short: 'María Luisa',
     places: [
@@ -220,8 +220,8 @@ const hoodDefs = [
   {
     id: 'nervion',
     num: 14,
-    x: 722,
-    y: 338,
+    lat: 37.381,
+    lon: -5.971,
     name: { fr: 'Quartier universitaire de Viapol / Nervión', es: 'Barrio universitario de Viapol / Nervión', en: 'Viapol / Nervión university district' },
     short: 'Nervión',
     places: [p('Udon Viapol', 'restos'), p('Tapas Enramadilla', 'restos')],
@@ -230,8 +230,6 @@ const hoodDefs = [
     id: 'hors-centre',
     num: 15,
     outside: true,
-    x: 120,
-    y: 120,
     name: { fr: 'Hors du centre (nord et périphérie)', es: 'Fuera del centro (norte y periferia)', en: 'Outside the centre (north and outskirts)' },
     short: { fr: 'Hors du centre', es: 'Fuera del centro', en: 'Outside the centre' },
     places: [
