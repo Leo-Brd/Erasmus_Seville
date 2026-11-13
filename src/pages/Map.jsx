@@ -8,6 +8,8 @@ import CityMap from '../components/CityMap.jsx'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import Photo from '../components/Photo.jsx'
+import PhotoCredit from '../components/PhotoCredit.jsx'
+import { placePhotos } from '../data/placePhotos.js'
 
 const themeById = Object.fromEntries(themes.map((x) => [x.id, x]))
 const hoodById = Object.fromEntries(hoods.map((h) => [h.id, h]))
@@ -52,7 +54,10 @@ function PlaceItem({ place, open, onToggle }) {
       </button>
       {open && (
         <div className="place__body">
-          <Photo name={`lieux/${place.id}`} alt={l(place.name)} ratio="16 / 9" />
+          <figure className="place__figure">
+            <Photo name={`lieux/${place.id}`} alt={l(place.name)} ratio="16 / 9" />
+            <PhotoCredit photo={placePhotos[place.id]} />
+          </figure>
           <div className="place__field">
             <h4>{t.map.description}</h4>
             <p className={place.desc ? '' : 'soon'}>{place.desc ? l(place.desc) : t.comingSoon}</p>

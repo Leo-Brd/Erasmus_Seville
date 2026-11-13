@@ -1425,6 +1425,12 @@ a:focus-visible,
   gap: 12px;
   padding: 4px 12px 14px;
 }
+.place__figure {
+  margin: 0;
+}
+.place__figure .photo {
+  margin: 0;
+}
 .place__field h4 {
   font-family: var(--font-body);
   font-size: 0.75rem;
