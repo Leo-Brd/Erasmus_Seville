@@ -11,10 +11,9 @@ export const themes = [
   { id: 'loisirs', icon: 'star', label: { fr: 'Loisirs et curiosités', es: 'Ocio y curiosidades', en: 'Leisure and curiosities' } },
 ]
 
-// Pour chaque lieu : p(nom, thème, { desc, tip, check })
+// Pour chaque lieu : p(nom, thème, { desc, tip })
 //   desc  = ma description (texte ou { fr, es, en })
 //   tip   = mon conseil perso (texte ou { fr, es, en })
-//   check = true si le thème est une supposition à vérifier (badge visible en mode développement uniquement)
 // Photo : dépose un fichier dans src/photos/lieux/<id>.jpg (l'id = nom en minuscules, sans accents, avec des tirets,
 // par ex. real-alcazar.jpg ; voir la liste des ids avec `npm run dev` : le chemin attendu s'affiche sous chaque photo vide).
 const p = (name, theme, opts = {}) => ({ name, theme, ...opts })
@@ -45,7 +44,7 @@ const hoodDefs = [
       p({ fr: 'Arènes de la Maestranza', es: 'Plaza de toros de la Maestranza', en: 'Maestranza Bullring' }, 'monuments'),
       p({ fr: 'Hôpital de la Charité', es: 'Hospital de la Caridad', en: 'Hospital de la Caridad' }, 'monuments'),
       p({ fr: 'Théâtre de la Maestranza', es: 'Teatro de la Maestranza', en: 'Maestranza Theatre' }, 'loisirs'),
-      p('Muelle New York', 'loisirs', { check: true }),
+      p('Muelle New York', 'loisirs'),
     ],
   },
   {
@@ -57,7 +56,7 @@ const hoodDefs = [
     places: [
       p({ fr: 'Archives générales des Indes', es: 'Archivo General de Indias', en: 'General Archive of the Indies' }, 'monuments'),
       p({ fr: 'Hôtel de ville', es: 'Ayuntamiento', en: 'City Hall' }, 'monuments'),
-      p('Plaza Nueva', 'monuments', { check: true }),
+      p('Plaza Nueva', 'monuments'),
       p('HUMANA', 'shopping'),
       p('Coffee Corner', 'cafes'),
       p('Tea and Coffee', 'cafes'),
@@ -76,14 +75,14 @@ const hoodDefs = [
     places: [
       p('Casa de Pilatos', 'monuments'),
       p('Iglesia del Salvador', 'eglises'),
-      p('Plaza del Salvador', 'loisirs', { check: true }),
+      p('Plaza del Salvador', 'loisirs'),
       p('Jester Acai', 'cafes'),
       p('La Gorda de las Delicias', 'restos'),
       p('Kukuchurro (Plaza del Salvador)', 'cafes'),
       p('Picu', 'bars'),
       p('Tu Tortilla', 'restos'),
-      p('Casa la Viuda', 'restos', { check: true }),
-      p('Bar Mundial', 'restos', { check: true }),
+      p('Casa la Viuda', 'restos'),
+      p('Bar Mundial', 'restos'),
       p('Tequila Bar', 'bars'),
     ],
   },
@@ -95,11 +94,11 @@ const hoodDefs = [
     name: 'San Bartolomé',
     places: [
       p('Iglesia Santa María la Blanca', 'eglises'),
-      p({ fr: 'Ancien quartier juif', es: 'Antigua judería', en: 'Former Jewish quarter' }, 'loisirs', { check: true }),
-      p('Mosaico', 'restos', { check: true }),
-      p('La Gitana Loca', 'restos', { check: true }),
+      p({ fr: 'Ancien quartier juif', es: 'Antigua judería',       en: 'Former Jewish quarter' }, 'loisirs'),
+            p('Mosaico', 'restos'),
+            p('La Gitana Loca', 'restos'),
       p('La Gorda de los Jardines', 'restos'),
-      p('Casa Fabiola', 'restos', { check: true }),
+      p('Casa Fabiola', 'restos'),
       p('Casa de los Pinelo', 'monuments'),
       p({ fr: 'El Monasterio (heladería artisanale)', es: 'El Monasterio (heladería artesanal)', en: 'El Monasterio (artisan ice-cream shop)' }, 'cafes'),
     ],
@@ -126,15 +125,15 @@ const hoodDefs = [
     short: 'Alameda',
     places: [
       p({ fr: 'Colonnes historiques d’Hercule', es: 'Columnas históricas de Hércules', en: 'Historic Columns of Hercules' }, 'monuments'),
-      p('Casa de las Sirenas', 'monuments', { check: true }),
-      p('Ático', 'bars', { check: true }),
-      p('Selvatico', 'bars', { check: true }),
+      p('Casa de las Sirenas', 'monuments'),
+      p('Ático', 'bars'),
+      p('Selvatico', 'bars'),
       p('Cafetería Orfeo', 'cafes'),
       p('Cervecería Bar La Maceta', 'bars'),
       p('Alameda Ritual Club', 'bars'),
-      p('Plan B', 'bars', { check: true }),
-      p('La Tizna', 'bars', { check: true }),
-      p('Bar El Comercio', 'cafes', { check: true }),
+      p('Plan B', 'bars'),
+      p('La Tizna', 'bars'),
+      p('Bar El Comercio', 'cafes'),
     ],
   },
   {
@@ -147,11 +146,11 @@ const hoodDefs = [
       p('Mercado de Triana', 'restos'),
       p('Castillo de San Jorge', 'monuments'),
       p('Iglesia de Santa Ana', 'eglises'),
-      p('Calle Betis', 'bars', { check: true }),
+      p('Calle Betis', 'bars'),
       p('Puente de Isabel II', 'monuments'),
       p('Tijuana Tex Mex', 'restos'),
-      p('Iguana Terraza', 'bars', { check: true }),
-      p('Líbano Club', 'bars', { check: true }),
+      p('Iguana Terraza', 'bars'),
+      p('Líbano Club', 'bars'),
       p('Casa Félix restaurante', 'restos'),
       p('Titi Burger', 'restos'),
     ],
@@ -179,7 +178,7 @@ const hoodDefs = [
       p('Arco de la Macarena', 'monuments'),
       p('Parlamento de Andalucía', 'monuments'),
       p('Monasterio de San Jerónimo de Buenavista', 'eglises'),
-      p('El nacimiento del hombre huevo', 'loisirs', { check: true }),
+      p('El nacimiento del hombre huevo', 'loisirs'),
     ],
   },
   {

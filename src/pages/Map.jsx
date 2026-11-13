@@ -46,10 +46,7 @@ function PlaceItem({ place, open, onToggle }) {
         <span className={`place__icon theme-${place.theme}`}>
           <Icon name={theme.icon} size={18} />
         </span>
-        <span className="place__name">
-          {l(place.name)}
-          {import.meta.env.DEV && place.check && <em title={t.map.devCheck}> ⚠</em>}
-        </span>
+        <span className="place__name">{l(place.name)}</span>
         <Icon name="chevron" size={18} className="place__chevron" />
       </button>
       {open && (
