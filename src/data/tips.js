@@ -12,7 +12,7 @@ const tip = (title, body, titleEs, bodyEs, titleEn, bodyEn) => ({
 })
 const address = (name, note, nameEs = name, noteEs = note, nameEn = name, noteEn = note) => ({
   name: text(name, nameEs, nameEn),
-  note: text(note, noteEs, noteEn),
+  ...(note ? { note: text(note, noteEs, noteEn) } : {}),
 })
 
 export const tabs = [
@@ -60,6 +60,7 @@ export const tabs = [
   {
     id: 'esn', icon: 'people', label: { fr: 'Activités ESN', es: 'Actividades ESN', en: 'ESN activities' },
     tips: [
+      tip('Demande un buddy dès le début du semestre', 'Demande à avoir un buddy (parrain ou marraine) : il ou elle t’aidera à découvrir les lieux à voir, y compris les endroits secrets, et à répondre à toutes tes questions. Pour moi, cela a été une personne importante de mon Erasmus, que je n’oublierai jamais.', 'Pide un buddy al empezar el semestre', 'Pide que te asignen un buddy (padrino o madrina): te ayudará a descubrir los lugares que ver, incluidos los secretos, y a resolver cualquier duda. Para mí fue una persona importante de mi Erasmus, a la que nunca olvidaré.', 'Ask for a buddy at the start of the semester', 'Ask to be paired with a buddy (a mentor): they will help you discover the places worth seeing, including the secret ones, and answer any question you have. For me, it was an important person in my Erasmus, someone I will never forget.'),
       tip('Participe aux activités', 'C’est un excellent moyen de rencontrer des étudiants de nombreuses nationalités. Les activités de l’ESN ont rempli mes semaines.', 'Participa en las actividades', 'Es una forma estupenda de conocer a estudiantes de muchas nacionalidades. Las actividades de la ESN llenaban mis semanas.', 'Join the activities', 'They are a great way to meet students from many countries. ESN activities filled my weeks.'),
       tip('Ne rate pas la tournée des tapas', 'C’est une excellente activité pour découvrir les spécialités.', 'No te pierdas la ruta de tapas', 'Es una actividad genial para descubrir las especialidades.', 'Do not miss the tapas tour', 'It is a great way to discover local specialities.'),
       tip('Essaie plusieurs activités', 'Visite de la ville, pub crawl, soirées baby-foot, tour cofrade, cours de sevillanas, bars, voyages et soirées : il y a beaucoup de choix.', 'Prueba distintas actividades', 'Visita por la ciudad, pub crawl, noches de futbolín, ruta cofrade, clases de sevillanas, bares, viajes y fiestas: hay muchas opciones.', 'Try a range of activities', 'There are city tours, pub crawls, table football nights, Holy Week tours, sevillanas classes, bars, trips and parties.'),
@@ -125,7 +126,15 @@ export const tabs = [
   {
     id: 'monuments', icon: 'tower', label: { fr: 'Monuments', es: 'Monumentos', en: 'Monuments' }, themes: ['monuments', 'eglises', 'parcs'],
     tips: [tip('Prends le temps de te promener', 'La Plaza de España et le parc María Luisa sont parfaits pour une balade et un moment de détente.', 'Tómate tiempo para pasear', 'La Plaza de España y el parque de María Luisa son perfectos para dar un paseo y relajarse.', 'Take time for a walk', 'Plaza de España and María Luisa Park are perfect for a stroll and a relaxing break.')],
-    addresses: [address('Plaza de España', 'À voir et à revoir.', 'Plaza de España', 'Un lugar para visitar una y otra vez.', 'Plaza de España', 'A place worth visiting more than once.'), address('Parc María Luisa', 'Un grand parc pour se promener ou se détendre.', 'Parque de María Luisa', 'Un gran parque para pasear o relajarse.', 'María Luisa Park', 'A large park for walks and relaxing.'), address('Pont de Triana', 'Agréable pour se promener au bord du fleuve.', 'Puente de Triana', 'Agradable para pasear junto al río.', 'Triana Bridge', 'A lovely riverside walk.')],
+    addresses: [
+      address('Huevo de Colón'),
+      address('Museo de Artes y Costumbres Populares', '', 'Museo de Artes y Costumbres Populares', '', 'Museum of Popular Arts and Customs'),
+      address('Casa de la Ciencia'),
+      address('Catedral de Sevilla', '', 'Catedral de Sevilla', '', 'Seville Cathedral'),
+      address('Real Alcázar'),
+      address('Casa de Pilatos'),
+      address('Palacio de las Dueñas'),
+      address('Plaza de España', 'À voir et à revoir.', 'Plaza de España', 'Un lugar para visitar una y otra vez.', 'Plaza de España', 'A place worth visiting more than once.'), address('Parc María Luisa', 'Un grand parc pour se promener ou se détendre.', 'Parque de María Luisa', 'Un gran parque para pasear o relajarse.', 'María Luisa Park', 'A large park for walks and relaxing.'), address('Pont de Triana', 'Agréable pour se promener au bord du fleuve.', 'Puente de Triana', 'Agradable para pasear junto al río.', 'Triana Bridge', 'A lovely riverside walk.')],
   },
   {
     id: 'bars', icon: 'glass', label: { fr: 'Bars et sorties', es: 'Bares y salidas', en: 'Bars and nightlife' }, themes: ['bars'],
