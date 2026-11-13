@@ -15,7 +15,6 @@ export const ui = {
     photo: { soon: 'Ma photo arrive bientôt' },
     comingSoon: 'À venir',
     home: {
-      kicker: 'Guide perso · Erasmus février – juin 2026',
       title: 'Ton Erasmus à Séville',
       tagline:
         'Mes bons plans, mes adresses et tout ce que j’aurais aimé savoir avant d’arriver : voilà mon petit guide pour que ton Erasmus à Séville se passe au mieux.',
@@ -119,7 +118,6 @@ export const ui = {
     photo: { soon: 'Mi foto llegará pronto' },
     comingSoon: 'Próximamente',
     home: {
-      kicker: 'Guía personal · Erasmus febrero – junio 2026',
       title: 'Tu Erasmus en Sevilla',
       tagline:
         'Mis mejores planes, mis direcciones y todo lo que me habría gustado saber antes de llegar: esta es mi pequeña guía para que tu Erasmus en Sevilla salga lo mejor posible.',
@@ -223,7 +221,6 @@ export const ui = {
     photo: { soon: 'My photo is coming soon' },
     comingSoon: 'Coming soon',
     home: {
-      kicker: 'Personal guide · Erasmus February – June 2026',
       title: 'Your Erasmus in Seville',
       tagline:
         'My best tips, my favourite addresses and everything I wish I’d known before arriving: here’s my little guide to help your Erasmus in Seville go as smoothly as possible.',

@@ -19,7 +19,6 @@ export default function Home() {
       <section className="hero">
         <div className="container hero__inner">
           <div className="hero__text">
-            <p className="kicker">{h.kicker}</p>
             <h1>{h.title}</h1>
             <p className="hero__tagline">{h.tagline}</p>
             <div className="hero__actions">
