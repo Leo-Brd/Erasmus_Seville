@@ -37,7 +37,7 @@ function pointsFor(hoodId, themeId) {
 }
 
 function PlaceItem({ place, open, onToggle }) {
-  const { t, l } = useI18n()
+  const { l } = useI18n()
   const theme = themeById[place.theme]
 
   return (
@@ -55,14 +55,6 @@ function PlaceItem({ place, open, onToggle }) {
             <Photo name={`lieux/${place.id}`} alt={l(place.name)} ratio="16 / 9" />
             <PhotoCredit photo={placePhotos[place.id]} />
           </figure>
-          <div className="place__field">
-            <h4>{t.map.description}</h4>
-            <p className={place.desc ? '' : 'soon'}>{place.desc ? l(place.desc) : t.comingSoon}</p>
-          </div>
-          <div className="place__field">
-            <h4>{t.map.tip}</h4>
-            <p className={place.tip ? '' : 'soon'}>{place.tip ? l(place.tip) : t.comingSoon}</p>
-          </div>
         </div>
       )}
     </li>

@@ -15,7 +15,7 @@ Guide Erasmus perso (FR / ES / EN) en React + Vite. Le site final n'appelle aucu
 | Réponses aux 30 questions | `src/data/questions.js` (objet `answers`) |
 | Conseils et adresses par thème, voyages, vocabulaire | `src/data/tips.js` |
 | Événements du calendrier | `src/data/events.js` |
-| Quartiers, lieux, descriptions et conseils persos | `src/data/places.js` |
+| Quartiers et lieux de la carte | `src/data/places.js` |
 | Textes de l'interface (FR/ES/EN) | `src/ui.js` |
 
 Les textes peuvent être une simple chaîne (français) ou `{ fr: '…', es: '…', en: '…' }`.

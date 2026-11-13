@@ -1529,17 +1529,6 @@ a:focus-visible,
 .place__figure .photo {
   margin: 0;
 }
-.place__field h4 {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blue);
-  margin-bottom: 2px;
-}
-.place__field p {
-  margin: 0;
-}
 
 .theme-monuments { --c: #1b4f9c; }
 .theme-eglises { --c: #6b4aa0; }

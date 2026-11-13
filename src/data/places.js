@@ -11,9 +11,7 @@ export const themes = [
   { id: 'loisirs', icon: 'star', label: { fr: 'Loisirs et curiosités', es: 'Ocio y curiosidades', en: 'Leisure and curiosities' } },
 ]
 
-// Pour chaque lieu : p(nom, thème, { desc, tip })
-//   desc  = ma description (texte ou { fr, es, en })
-//   tip   = mon conseil perso (texte ou { fr, es, en })
+// Pour chaque lieu : p(nom, thème). La photo se dépose dans src/photos/lieux/<id>.jpg (voir plus bas).
 // Photo : dépose un fichier dans src/photos/lieux/<id>.jpg (l'id = nom en minuscules, sans accents, avec des tirets,
 // par ex. real-alcazar.jpg ; voir la liste des ids avec `npm run dev` : le chemin attendu s'affiche sous chaque photo vide).
 const p = (name, theme, opts = {}) => ({ name, theme, ...opts })
