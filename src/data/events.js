@@ -102,7 +102,7 @@ export const events = [
   },
   {
     id: 'rentree-printemps',
-    photo: photo('Jl FilpoC', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Facultad_de_Ciencias_de_la_Comunicaci%C3%B3n,_Universidad_de_Sevilla.jpg'),
+    photo: photo('CarlosVdeHabsburgo', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Facultad_de_Biolog%C3%ADa.jpg'),
     icon: 'school',
     order: 5.1,
     semester: 'spring',
