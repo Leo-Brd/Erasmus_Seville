@@ -24,7 +24,7 @@ Les textes peuvent être une simple chaîne (français) ou `{ fr: '…', es: '�
 
 Dépose les fichiers (jpg, png, webp) dans `src/photos/` : ils sont détectés automatiquement.
 
-- `src/photos/accueil.jpg` : remplace l'illustration de l'accueil
+- `src/assets/home.jpg` : photo de la page d'accueil (remplace le fichier pour la changer)
 - `src/photos/lieux/<id-du-lieu>.jpg` : par ex. `real-alcazar.jpg`
 - `src/photos/evenements/<id>.jpg` : par ex. `semana-santa.jpg`
 - `src/photos/voyages/<id>.jpg` : par ex. `cadiz.jpg`

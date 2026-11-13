@@ -33,6 +33,7 @@ export const ui = {
         mapText: 'Une carte dessinée à la main avec mes quartiers, mes tapas, mes bars et mes coins préférés.',
       },
       openCard: 'Ouvrir',
+      photoAlt: 'Laurine à la Plaza de España, à Séville',
       noteTitle: 'Un guide écrit par une étudiante, pas par un office du tourisme',
       noteText:
         'J’ai vécu à Séville de février à juin 2026. Ici, tu trouveras ce que j’ai vraiment vécu, testé et aimé (ou pas).',
@@ -135,6 +136,7 @@ export const ui = {
         mapText: 'Un mapa dibujado a mano con mis barrios, mis tapas, mis bares y mis rincones preferidos.',
       },
       openCard: 'Abrir',
+      photoAlt: 'Laurine en la Plaza de España, en Sevilla',
       noteTitle: 'Una guía escrita por una estudiante, no por una oficina de turismo',
       noteText:
         'Viví en Sevilla de febrero a junio de 2026. Aquí encontrarás lo que de verdad viví, probé y me gustó (o no).',
@@ -237,6 +239,7 @@ export const ui = {
         mapText: 'A hand-drawn map with my neighbourhoods, my tapas, my bars and my favourite corners.',
       },
       openCard: 'Open',
+      photoAlt: 'Laurine at the Plaza de España in Seville',
       noteTitle: 'A guide written by a student, not by a tourist office',
       noteText:
         'I lived in Seville from February to June 2026. Here you’ll find what I really lived, tried and loved (or not).',

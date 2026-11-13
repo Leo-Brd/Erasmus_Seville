@@ -330,13 +330,18 @@ a:focus-visible,
   border: 4px solid var(--blue);
   box-shadow: 0 14px 40px rgba(15, 52, 112, 0.25), 0 0 0 10px #fff, 0 0 0 12px var(--blue-line);
   background: #fff;
-  aspect-ratio: 600 / 480;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  max-width: 440px;
+  justify-self: center;
 }
-.hero-art,
-.hero__art .photo {
+.hero-art {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transform: scale(1.22);
+  transform-origin: 52% 62%;
 }
 
 .section {
