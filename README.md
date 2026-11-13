@@ -28,6 +28,7 @@ Dépose les fichiers (jpg, png, webp) dans `src/photos/` : ils sont détectés a
 - `src/photos/lieux/<id-du-lieu>.jpg` : par ex. `real-alcazar.jpg`
 - `src/photos/evenements/<id>.jpg` : par ex. `semana-santa.jpg`
 - `src/photos/voyages/<id>.jpg` : par ex. `cadiz.jpg`
+- `src/photos/experience/` : photos de la page « Mon expérience », affichées dans un cadre de tableau à droite de la réponse. Nomme-les `q12.jpg`, `q12-2.jpg`… (q12 = question n°12, plusieurs photos possibles), ou garde leur nom d'origine et relie-les dans `photoLinks` (`src/data/questions.js`).
 
 Avec `npm run dev`, le chemin attendu s'affiche sous chaque emplacement de photo vide.
 

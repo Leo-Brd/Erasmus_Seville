@@ -153,6 +153,32 @@ export const answers = {
   },
 }
 
+// Photos de la page « Mon expérience » : dépose-les dans src/photos/experience/.
+// Une photo est reliée à une question de deux façons :
+//   1. par son nom : q12.jpg, q12-2.jpg, q12_plage.jpg → question q12 (plusieurs photos possibles)
+//   2. ou en la listant ici (pour les photos qui gardent leur nom d'origine) : { 'IMG_1234': 'q12' }
+export const photoLinks = {
+  'IMG-20261107-WA0011': 'q1', // vue aérienne de Séville
+  'IMG-20261107-WA0002': 'q1', // spectacle de flamenco
+  'IMG-20261107-WA0017': 'q1', // architecture
+  'IMG-20261107-WA0009': 'q11', // remise de diplôme, Faculté de Biologie
+  'IMG-20261107-WA0018': 'q11', // campus
+  'IMG-20261107-WA0016': 'q22', // Torre Sevilla sous le soleil
+  'IMG-20261107-WA0008': 'q20', // tapas
+  'IMG-20261107-WA0010': 'q20', // solomillo et frites
+  'IMG-20261107-WA0012': 'q20', // churros con chocolate
+  'IMG-20261107-WA0000': 'q19', // Plaza de España
+  'IMG-20261107-WA0015': 'q19', // Plaza de España
+  'IMG-20261107-WA0001': 'q21', // portada de la Feria illuminée
+  'IMG-20261107-WA0004': 'q21', // Semana Santa
+  'IMG-20261107-WA0005': 'q21', // Semana Santa
+  'IMG-20261107-WA0006': 'q21', // paso de Semana Santa
+  'IMG-20261107-WA0013': 'q21', // Feria / Semana Santa
+  'IMG-20261107-WA0014': 'q21', // carreta
+  'IMG-20261107-WA0003': 'q23', // bords du Guadalquivir, vers Triana
+  'IMG-20261107-WA0007': 'q23', // Torre del Oro depuis le fleuve
+}
+
 export const groups = [
   {
     id: 'avant',

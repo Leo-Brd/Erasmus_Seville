@@ -1,8 +1,24 @@
 import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
-import { answers, groups } from '../data/questions.js'
+import { answers, groups, photoLinks } from '../data/questions.js'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
+import FramedPhoto from '../components/FramedPhoto.jsx'
+import { photosIn } from '../components/Photo.jsx'
+
+// Inclinaisons alternées, pour un accrochage naturel.
+const TILTS = [3, -2.5, 2, -3.5, 1.5]
+
+const linksLower = Object.fromEntries(Object.entries(photoLinks).map(([k, v]) => [k.toLowerCase(), v]))
+
+function photosByQuestion() {
+  const map = {}
+  for (const { name, url } of photosIn('experience')) {
+    const id = linksLower[name] ?? name.match(/^(q\d+)(?![0-9])/i)?.[1]?.toLowerCase()
+    if (id) (map[id] ??= []).push(url)
+  }
+  return map
+}
 
 export default function Experience() {
   const { t, l } = useI18n()
@@ -10,6 +26,7 @@ export default function Experience() {
   const [open, setOpen] = useState(() => new Set())
 
   const allIds = useMemo(() => groups.flatMap((g) => g.questions.map((q) => q.id)), [])
+  const photos = useMemo(photosByQuestion, [])
   const answeredCount = allIds.filter((id) => answers[id]).length
 
   const toggle = (id) =>
@@ -64,6 +81,7 @@ export default function Experience() {
             {group.questions.map((q) => {
               const isOpen = open.has(q.id)
               const answer = answers[q.id]
+              const pics = photos[q.id] ?? []
               return (
                 <div key={q.id} className={`qa ${isOpen ? 'is-open' : ''}`}>
                   <h3 className="qa__q">
@@ -78,8 +96,15 @@ export default function Experience() {
                     </button>
                   </h3>
                   {isOpen && (
-                    <div id={`reponse-${q.id}`} className={`qa__a ${answer ? '' : 'is-empty'}`}>
-                      {answer ? <p>{l(answer)}</p> : <p>{e.soon}</p>}
+                    <div id={`reponse-${q.id}`} className={`qa__a ${answer ? '' : 'is-empty'} ${pics.length ? 'has-photos' : ''}`}>
+                      <div className="qa__text">{answer ? <p>{l(answer)}</p> : <p>{e.soon}</p>}</div>
+                      {pics.length > 0 && (
+                        <div className="qa__photos">
+                          {pics.map((url, i) => (
+                            <FramedPhoto key={url} url={url} alt={l(q.text)} tilt={TILTS[(i + Number(q.id.slice(1))) % TILTS.length]} />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

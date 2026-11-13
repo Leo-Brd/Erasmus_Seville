@@ -19,6 +19,15 @@ export function hasPhoto(name) {
   return Boolean(index[name?.toLowerCase()])
 }
 
+// Toutes les photos d'un dossier, triées par nom : [{ name: 'IMG_1234', url }]
+export function photosIn(folder) {
+  const prefix = `${folder.toLowerCase()}/`
+  return Object.keys(index)
+    .filter((k) => k.startsWith(prefix))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+    .map((k) => ({ name: k.slice(prefix.length), url: index[k] }))
+}
+
 export default function Photo({ name, alt = '', ratio = '4 / 3', className = '', position }) {
   const { t } = useI18n()
   const [failed, setFailed] = useState(false)
