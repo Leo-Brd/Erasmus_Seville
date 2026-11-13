@@ -31,29 +31,26 @@ function TipsList({ tab }) {
 
 function Addresses({ tab }) {
   const { t, l } = useI18n()
+  if (tab.addresses.length === 0) return null
   return (
     <section className="panel">
       <h2>{t.tips.addressesHeading}</h2>
-      {tab.addresses.length === 0 ? (
-        <p className="soon">{t.tips.addressesSoon}</p>
-      ) : (
-        <ul className="address-list">
-          {tab.addresses.map((a, i) => (
-            <li key={i} className="address">
-              <Icon name="pin" size={20} />
-              <div>
-                <strong>{l(a.name)}</strong>
-                {a.note && <p>{l(a.note)}</p>}
-                {a.link && (
-                  <a href={a.link} target="_blank" rel="noopener noreferrer">
-                    {a.link.replace(/^https?:\/\/(www\.)?/, '')}
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="address-list">
+        {tab.addresses.map((a, i) => (
+          <li key={i} className="address">
+            <Icon name="pin" size={20} />
+            <div>
+              <strong>{l(a.name)}</strong>
+              {a.note && <p>{l(a.note)}</p>}
+              {a.link && (
+                <a href={a.link} target="_blank" rel="noopener noreferrer">
+                  {a.link.replace(/^https?:\/\/(www\.)?/, '')}
+                </a>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

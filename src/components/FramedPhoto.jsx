@@ -1,14 +1,9 @@
-// Photo accrochée comme un tableau : cadre en bois (quatre baguettes à coupe d'onglet), passe-partout crème, légère inclinaison.
-export default function FramedPhoto({ url, alt, tilt = 0, onClick, label }) {
+// Photo « polaroid » : cadre blanc avec une légende manuscrite, légèrement penchée.
+export default function FramedPhoto({ url, alt, tilt = 0, caption, onClick, label }) {
   const inner = (
-    <div className="framed__frame">
-      <span className="fr fr--t" />
-      <span className="fr fr--r" />
-      <span className="fr fr--b" />
-      <span className="fr fr--l" />
-      <div className="framed__mat">
-        <img src={url} alt={alt} loading="lazy" />
-      </div>
+    <div className="framed__card">
+      <img src={url} alt={alt} loading="lazy" />
+      {caption && <span className="framed__caption">{caption}</span>}
     </div>
   )
 

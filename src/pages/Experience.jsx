@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
-import { answers, groups, photoLinks } from '../data/questions.js'
+import { answers, groups, photoCaptions, photoLinks } from '../data/questions.js'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import FramedPhoto from '../components/FramedPhoto.jsx'
@@ -10,12 +10,13 @@ import { photosIn } from '../components/Photo.jsx'
 const TILTS = [2.5, -2, 1.5, -3, 3, -1.5]
 
 const linksLower = Object.fromEntries(Object.entries(photoLinks).map(([k, v]) => [k.toLowerCase(), v]))
+const captionsLower = Object.fromEntries(Object.entries(photoCaptions).map(([k, v]) => [k.toLowerCase(), v]))
 
 function photosByQuestion() {
   const map = {}
   for (const { name, url } of photosIn('experience')) {
     const id = linksLower[name] ?? name.match(/^(q\d+)(?![0-9])/i)?.[1]?.toLowerCase()
-    if (id) (map[id] ??= []).push(url)
+    if (id) (map[id] ??= []).push({ url, name })
   }
   return map
 }
@@ -29,7 +30,7 @@ export default function Experience() {
   const photos = useMemo(photosByQuestion, [])
   // Galerie : toutes les photos, dans l'ordre des questions auxquelles elles sont reliées.
   const gallery = useMemo(
-    () => groups.flatMap((g) => g.questions).flatMap((q) => (photos[q.id] ?? []).map((url) => ({ url, question: q }))),
+    () => groups.flatMap((g) => g.questions).flatMap((q) => (photos[q.id] ?? []).map((p) => ({ ...p, question: q }))),
     [photos],
   )
   // Sur grand écran, les photos se répartissent dans les marges (une sur deux à gauche / à droite, dans l'ordre) ;
@@ -37,11 +38,12 @@ export default function Experience() {
   const leftSide = gallery.filter((_, i) => i % 2 === 0)
   const rightSide = gallery.filter((_, i) => i % 2 === 1)
   const renderPhotos = (items, offset, step) =>
-    items.map(({ url, question }, i) => (
+    items.map(({ url, name, question }, i) => (
       <FramedPhoto
         key={url}
         url={url}
-        alt={l(question.text)}
+        alt={l(captionsLower[name] ?? question.text)}
+        caption={l(captionsLower[name])}
         tilt={TILTS[(offset + i * step) % TILTS.length]}
         label={`${e.seeQuestion} : ${l(question.text)}`}
         onClick={() => showQuestion(question.id)}

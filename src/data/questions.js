@@ -173,10 +173,33 @@ export const photoLinks = {
   'IMG-20261107-WA0004': 'q21', // Semana Santa
   'IMG-20261107-WA0005': 'q21', // Semana Santa
   'IMG-20261107-WA0006': 'q21', // paso de Semana Santa
-  'IMG-20261107-WA0013': 'q21', // Feria / Semana Santa
-  'IMG-20261107-WA0014': 'q21', // carreta
+  'IMG-20261107-WA0013': 'q21', // Corpus Christi
+  'IMG-20261107-WA0014': 'q21', // Romería del Rocío
   'IMG-20261107-WA0003': 'q23', // bords du Guadalquivir, vers Triana
   'IMG-20261107-WA0007': 'q23', // Torre del Oro depuis le fleuve
+}
+
+// Légendes des polaroids (clé = nom du fichier, texte simple ou { fr, es, en }). Sans entrée : pas de légende.
+export const photoCaptions = {
+  'IMG-20261107-WA0011': { fr: 'Séville vue d’en haut', es: 'Sevilla desde las alturas', en: 'Seville from above' },
+  'IMG-20261107-WA0002': { fr: 'Soirée flamenco', es: 'Noche de flamenco', en: 'Flamenco night' },
+  'IMG-20261107-WA0017': { fr: 'Cathédrale de Seville', es: 'Catedral de Sevilla', en: 'Seville Cathedral' },
+  'IMG-20261107-WA0009': { fr: 'Remise de diplôme', es: 'Entrega del diploma', en: 'Graduation day' },
+  'IMG-20261107-WA0018': { fr: 'Le campus', es: 'El campus', en: 'The campus' },
+  'IMG-20261107-WA0016': { fr: 'Torre Sevilla', es: 'Torre Sevilla', en: 'Torre Sevilla' },
+  'IMG-20261107-WA0008': { fr: 'Tapas !', es: '¡Tapas!', en: 'Tapas!' },
+  'IMG-20261107-WA0010': { fr: 'Solomillo y patatas', es: 'Solomillo y patatas', en: 'Sirloin and fries' },
+  'IMG-20261107-WA0012': { fr: 'Churros con chocolate', es: 'Churros con chocolate', en: 'Churros con chocolate' },
+  'IMG-20261107-WA0000': { fr: 'Plaza de España', es: 'Plaza de España', en: 'Plaza de España' },
+  'IMG-20261107-WA0015': { fr: 'Plaza de España', es: 'Plaza de España', en: 'Plaza de España' },
+  'IMG-20261107-WA0001': { fr: 'La portada de la Feria', es: 'La portada de la Feria', en: 'The Feria gateway' },
+  'IMG-20261107-WA0004': { fr: 'Semana Santa', es: 'Semana Santa', en: 'Holy Week' },
+  'IMG-20261107-WA0005': { fr: 'Semana Santa', es: 'Semana Santa', en: 'Holy Week' },
+  'IMG-20261107-WA0006': { fr: 'Un paso de Semana Santa', es: 'Un paso de Semana Santa', en: 'A Holy Week paso' },
+  'IMG-20261107-WA0003': { fr: 'Le Guadalquivir', es: 'El Guadalquivir', en: 'The Guadalquivir' },
+  'IMG-20261107-WA0007': { fr: 'La Torre del Oro', es: 'La Torre del Oro', en: 'The Torre del Oro' },
+  'IMG-20261107-WA0013': { fr: 'Corpus Christi', es: 'Corpus Christi', en: 'Corpus Christi' },
+  'IMG-20261107-WA0014': { fr: 'Romería del Rocío', es: 'Romería del Rocío', en: 'Romería del Rocío' },
 }
 
 export const groups = [
