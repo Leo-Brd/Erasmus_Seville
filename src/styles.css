@@ -1505,6 +1505,9 @@ a:focus-visible,
 .place__head:hover {
   background: var(--blue-soft);
 }
+.place--plain .place__head:hover {
+  background: none;
+}
 .place__icon {
   display: grid;
   place-items: center;

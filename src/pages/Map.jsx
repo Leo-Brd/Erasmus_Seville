@@ -7,7 +7,7 @@ import { project } from '../data/mapData.js'
 import CityMap from '../components/CityMap.jsx'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
-import Photo from '../components/Photo.jsx'
+import Photo, { hasPhoto } from '../components/Photo.jsx'
 import PhotoCredit from '../components/PhotoCredit.jsx'
 import { placePhotos } from '../data/placePhotos.js'
 
@@ -39,13 +39,30 @@ function pointsFor(hoodId, themeId) {
 function PlaceItem({ place, open, onToggle }) {
   const { l } = useI18n()
   const theme = themeById[place.theme]
+  const hasImage = hasPhoto(`lieux/${place.id}`)
+
+  const icon = (
+    <span className={`place__icon theme-${place.theme}`}>
+      <Icon name={theme.icon} size={18} />
+    </span>
+  )
+
+  // Sans photo, le lieu reste dans la liste mais n'a rien à déplier.
+  if (!hasImage) {
+    return (
+      <li id={`place-${place.id}`} className="place place--plain">
+        <div className="place__head">
+          {icon}
+          <span className="place__name">{l(place.name)}</span>
+        </div>
+      </li>
+    )
+  }
 
   return (
     <li id={`place-${place.id}`} className={`place ${open ? 'is-open' : ''}`}>
       <button type="button" className="place__head" aria-expanded={open} onClick={onToggle}>
-        <span className={`place__icon theme-${place.theme}`}>
-          <Icon name={theme.icon} size={18} />
-        </span>
+        {icon}
         <span className="place__name">{l(place.name)}</span>
         <Icon name="chevron" size={18} className="place__chevron" />
       </button>
