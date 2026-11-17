@@ -2,8 +2,7 @@ import { useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n.jsx'
 import { allPlaces, hoods, themes } from '../data/places.js'
-import { placeCoords, hoodCoords } from '../data/placeCoords.js'
-import { project } from '../data/mapData.js'
+import { placeCoords } from '../data/placeCoords.js'
 import CityMap from '../components/CityMap.jsx'
 import Icon from '../components/Icon.jsx'
 import PageHeader from '../components/PageHeader.jsx'
@@ -14,9 +13,10 @@ import { placePhotos } from '../data/placePhotos.js'
 const themeById = Object.fromEntries(themes.map((x) => [x.id, x]))
 const hoodById = Object.fromEntries(hoods.map((h) => [h.id, h]))
 
-const hoodPos = (h) => hoodCoords[h.id] ?? (h.lat != null ? project(h.lat, h.lon) : null)
+// Position [lat, lon] du repère d'un quartier (aucune pour « Hors du centre » et « À confirmer »).
+const hoodPos = (h) => (h.lat != null ? [h.lat, h.lon] : null)
 
-// Points à cadrer sur la carte pour une sélection (quartier et/ou thème). Liste vide : vue d'ensemble.
+// Points [lat, lon] à cadrer sur la carte pour une sélection (quartier et/ou thème). Liste vide : vue d'ensemble.
 function pointsFor(hoodId, themeId) {
   const pts = []
   if (hoodId) {
@@ -47,14 +47,22 @@ function PlaceItem({ place, open, onToggle }) {
     </span>
   )
 
-  // Sans photo, le lieu reste dans la liste mais n'a rien à déplier.
+  // Sans photo, rien à déplier : un clic centre simplement la carte sur le lieu (s'il a des coordonnées).
   if (!hasImage) {
     return (
-      <li id={`place-${place.id}`} className="place place--plain">
-        <div className="place__head">
-          {icon}
-          <span className="place__name">{l(place.name)}</span>
-        </div>
+      <li id={`place-${place.id}`} className={`place place--plain ${open ? 'is-open' : ''}`}>
+        {placeCoords[place.id] ? (
+          <button type="button" className="place__head" onClick={onToggle} aria-pressed={open}>
+            {icon}
+            <span className="place__name">{l(place.name)}</span>
+            <Icon name="pin" size={16} className="place__locate" />
+          </button>
+        ) : (
+          <div className="place__head">
+            {icon}
+            <span className="place__name">{l(place.name)}</span>
+          </div>
+        )}
       </li>
     )
   }
@@ -94,10 +102,10 @@ export default function MapPage() {
   const [focus, setFocus] = useState(() => {
     const pts = pointsFor(initialPlace?.hood ?? null, initialTheme)
     const own = initialPlace && placeCoords[initialPlace.id]
-    return pts.length || own ? { key: 0, points: own ? [own] : pts, minW: own ? 420 : 520 } : null
+    return pts.length || own ? { key: 0, points: own ? [own] : pts, maxZoom: own ? 17 : 16 } : null
   })
 
-  const focusOn = (points, minW) => setFocus({ key: ++focusSeq.current, points, minW })
+  const focusOn = (points, maxZoom = 16) => setFocus({ key: ++focusSeq.current, points, maxZoom })
 
   const litIds = useMemo(
     () => (themeId ? new Set(allPlaces.filter((p) => p.theme === themeId).map((p) => p.hood)) : null),
@@ -137,7 +145,7 @@ export default function MapPage() {
   const togglePlace = (id) => {
     const opening = openPlace !== id
     setOpenPlace(opening ? id : null)
-    if (opening && placeCoords[id]) focusOn([placeCoords[id]], 380)
+    if (opening && placeCoords[id]) focusOn([placeCoords[id]], 17)
     if (opening) setTimeout(() => document.getElementById(`place-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60)
   }
 
@@ -152,7 +160,7 @@ export default function MapPage() {
   const markers = useMemo(
     () =>
       hoodId || themeId
-        ? places.filter((p) => placeCoords[p.id]).map((p) => ({ id: p.id, theme: p.theme, name: p.name, x: placeCoords[p.id][0], y: placeCoords[p.id][1] }))
+        ? places.filter((p) => placeCoords[p.id]).map((p) => ({ id: p.id, theme: p.theme, name: p.name, pos: placeCoords[p.id] }))
         : [],
     [places, hoodId, themeId],
   )

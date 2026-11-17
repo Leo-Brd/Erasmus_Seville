@@ -20,8 +20,8 @@ const hoodDefs = [
   {
     id: 'santa-cruz',
     num: 1,
-    lat: 37.3858,
-    lon: -5.9895,
+    lat: 37.3854,
+    lon: -5.991,
     name: 'Santa Cruz',
     places: [
       p('Real Alcázar', 'monuments'),
@@ -35,7 +35,7 @@ const hoodDefs = [
     id: 'arenal',
     num: 2,
     lat: 37.3866,
-    lon: -5.9982,
+    lon: -5.9969,
     name: 'El Arenal',
     places: [
       p('Torre del Oro', 'monuments'),
@@ -67,8 +67,8 @@ const hoodDefs = [
   {
     id: 'alfalfa',
     num: 4,
-    lat: 37.3913,
-    lon: -5.9922,
+    lat: 37.3908,
+    lon: -5.9929,
     name: 'Alfalfa',
     places: [
       p('Casa de Pilatos', 'monuments'),
@@ -87,8 +87,8 @@ const hoodDefs = [
   {
     id: 'san-bartolome',
     num: 5,
-    lat: 37.3897,
-    lon: -5.9885,
+    lat: 37.3888,
+    lon: -5.987,
     name: 'San Bartolomé',
     places: [
       p('Iglesia Santa María la Blanca', 'eglises'),
@@ -104,8 +104,8 @@ const hoodDefs = [
   {
     id: 'feria',
     num: 6,
-    lat: 37.3978,
-    lon: -5.9918,
+    lat: 37.3977,
+    lon: -5.9913,
     name: 'Feria',
     places: [
       p('Mercado de Feria', 'restos'),
@@ -117,8 +117,8 @@ const hoodDefs = [
   {
     id: 'alameda',
     num: 7,
-    lat: 37.3992,
-    lon: -5.9959,
+    lat: 37.3976,
+    lon: -5.9938,
     name: 'Alameda de Hércules',
     short: 'Alameda',
     places: [
@@ -137,8 +137,8 @@ const hoodDefs = [
   {
     id: 'triana',
     num: 8,
-    lat: 37.3845,
-    lon: -6.0035,
+    lat: 37.3835,
+    lon: -6.0041,
     name: 'Triana',
     places: [
       p('Mercado de Triana', 'restos'),
@@ -156,8 +156,8 @@ const hoodDefs = [
   {
     id: 'remedios',
     num: 9,
-    lat: 37.3755,
-    lon: -6.0035,
+    lat: 37.3747,
+    lon: -5.9993,
     name: 'Los Remedios',
     places: [
       p('Parque de los Príncipes', 'parcs'),
@@ -182,8 +182,8 @@ const hoodDefs = [
   {
     id: 'san-lorenzo',
     num: 11,
-    lat: 37.3965,
-    lon: -5.999,
+    lat: 37.3992,
+    lon: -5.9977,
     name: 'San Lorenzo',
     places: [
       p({ fr: 'Basilique de Jesús del Gran Poder', es: 'Basílica de Jesús del Gran Poder', en: 'Basilica of Jesús del Gran Poder' }, 'eglises'),
@@ -194,8 +194,8 @@ const hoodDefs = [
   {
     id: 'san-julian',
     num: 12,
-    lat: 37.3992,
-    lon: -5.9885,
+    lat: 37.399,
+    lon: -5.9854,
     name: 'San Julián',
     places: [p('Iglesia de San Julián', 'eglises'), p('Iglesia de Santa Marina', 'eglises')],
   },
@@ -217,8 +217,8 @@ const hoodDefs = [
   {
     id: 'nervion',
     num: 14,
-    lat: 37.381,
-    lon: -5.971,
+    lat: 37.3823,
+    lon: -5.9749,
     name: { fr: 'Quartier universitaire de Viapol / Nervión', es: 'Barrio universitario de Viapol / Nervión', en: 'Viapol / Nervión university district' },
     short: 'Nervión',
     places: [p('Udon Viapol', 'restos'), p('Tapas Enramadilla', 'restos')],

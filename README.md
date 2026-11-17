@@ -1,6 +1,6 @@
 # Ton Erasmus à Séville
 
-Guide Erasmus perso (FR / ES / EN) en React + Vite. Le site final n'appelle aucun service externe : la carte est un SVG vectoriel généré à partir d'OpenStreetMap, les icônes sont dessinées à la main et les photos sont intégrées.
+Guide Erasmus perso (FR / ES / EN) en React + Vite. Les icônes sont dessinées à la main, les photos sont intégrées au site et la carte utilise Leaflet et OpenStreetMap.
 
 ## Commandes
 
@@ -34,8 +34,8 @@ Avec `npm run dev`, le chemin attendu s'affiche sous chaque emplacement de photo
 
 ## Carte
 
-La carte (`src/data/mapData.js`, `src/data/placeCoords.js`) est générée, pas écrite à la main : `node scripts/build-map.mjs` télécharge les routes, le fleuve et les parcs d'OpenStreetMap (© contributeurs OpenStreetMap, ODbL), puis les simplifie en SVG. À ne relancer que pour mettre la carte à jour (il faut internet).
+La carte est une vraie carte interactive ([Leaflet](https://leafletjs.com) + fond de carte [OpenStreetMap](https://www.openstreetmap.org/copyright)). Le fond de carte est chargé depuis les serveurs d'OpenStreetMap : il faut donc une connexion internet pour l'afficher (le reste du site fonctionne hors ligne).
 
-- Seuls les monuments, églises, parcs, marchés, lieux de loisirs et facultés dont l'emplacement a été **retrouvé avec certitude** dans OpenStreetMap ont un point sur la carte. Les bars, restos et boutiques n'en ont pas : leurs noms sont trop courants pour ne pas risquer de se tromper. Pour en placer un, ajoute son id et ses coordonnées dans `scripts/build-map.mjs` (ou envoie-moi l'adresse).
-- Les noms de lieux écrits en français sont reliés à leur nom espagnol dans `scripts/place-aliases.mjs`.
+- Les coordonnées GPS des lieux sont dans `src/data/placeCoords.js`, vérifiées une par une dans OpenStreetMap. Un lieu absent de ce fichier n'a pas de point (introuvable ou nom ambigu).
+- Pour ajouter un point : clic droit sur l'endroit exact dans Google Maps (ou OpenStreetMap), copier « latitude, longitude », puis ajouter `'id-du-lieu': [latitude, longitude],` dans `placeCoords.js`.
 - Le centre des quartiers (`lat`/`lon`) est dans `src/data/places.js`.
